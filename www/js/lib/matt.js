@@ -2,7 +2,7 @@
  * Created by garden on 12/7/2013.
  */
 
-define(["jquery"], function ($) {
+define(["jquery", "world"], function ($, world) {
     var addCircles = function () {
         var circleRadii = [40, 20, 10];
 
@@ -29,7 +29,45 @@ define(["jquery"], function ($) {
             });
         };
 
+    var addMercator = function () {
+        var width = 960;
+        var height = 960;
+
+        var projection = d3.geo.mercator()
+            .scale((width + 1) / 2 / Math.PI)
+            .translate([width / 2, height / 2])
+            .precision(.1);
+
+        var path = d3.geo.path()
+            .projection(projection);
+
+        var graticule = d3.geo.graticule();
+
+        var svg = d3.select("body").append("svg")
+            .attr({"width": width,
+                   "height": height,
+                   "id": "map"});
+
+        console.log(world.world);
+
+        svg.append("path")
+            .datum(graticule)
+            .attr("class", "graticule")
+            .attr("d", path);
+
+        svg.insert("path", ".graticule")
+            .datum(topojson.feature(world.world, world.world.objects.land))
+            .attr("class", "land")
+            .attr("d", path);
+
+        svg.insert("path", ".graticule")
+            .datum(topojson.mesh(world.world, world.world.objects.countries, function (a, b) { return a !== b; }))
+            .attr("class", "boundary")
+            .attr("d", path);
+    };
+
     return {
-        'addCircles' : addCircles
+        'addCircles' : addCircles,
+        'addMercator' : addMercator
     };
 });
