@@ -1,2 +1,2 @@
-require './src/app.rb'
+require './www/app.rb'
 run RhokNsi::RhokNsiApp
