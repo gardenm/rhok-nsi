@@ -14,12 +14,12 @@ module RhokNsi
 
     get "/makeData" do
       content_type :json
-      {cols: [
-        {id:"",label:"Country",pattern:"",type:"string"},
-        {id:"",label:"Contribution",pattern:"",type:"number"}
-      ],
-      rows: [{c:[{v:"Afghanistan",f:nil},{v:1010760518,f:"$1,010,760,518"}]}]}.to_json
+      json = File.read(File.dirname(__FILE__) + '/public/data/fullworld.json')
+      JSON.parse(json)
     end
     
+    get '/j' do
+      File.read(File.dirname(__FILE__) + '/views/j.html')
+    end
   end
 end
