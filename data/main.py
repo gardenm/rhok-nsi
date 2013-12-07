@@ -5,14 +5,14 @@ from pprint import pprint
 from petl import *
 
 # We're interested in all health related sectors. First ask for all sectors
-# url = "http://cidp.herokuapp.com/cube/cida/aggregate?drilldown=sector_name"
+url = "http://cidp.herokuapp.com/cube/cida/aggregate?drilldown=sector_name"
 
-file = open('facts.json', 'r')
-json_data = json.load(file)
+# file = open('facts.json', 'r')
+# json_data = json.load(file)
 # list_titles = ['Water, Sanitation and Hygiene for Southern Mali', 'Improving Nutrition through Homestead Food Production']
 
 
-petl_data = fromjson('facts.json')
+petl_data = fromjson(url)
 print look(petl_data)
 
 
