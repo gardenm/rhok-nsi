@@ -1,6 +1,6 @@
 
 define(["jquery"], function ($) {
-    var pieChart = function(precentages, size) { 
+    var pieChart = function(precentages, size, object) { 
       var h = size;
       var w = size;
 
@@ -15,8 +15,8 @@ define(["jquery"], function ($) {
         .innerRadius(innerRadius)
         .outerRadius(outerRadius);
 
-      var svg = d3.select("body")
-        .append("svg")
+      
+      object.append("svg")
         .attr("width", w)
         .attr("height", h);
 
@@ -41,6 +41,8 @@ define(["jquery"], function ($) {
         .text(function(d) {
             return d.value;
         });
+
+      return object;
     }
 
     return {
