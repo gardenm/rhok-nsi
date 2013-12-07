@@ -2,7 +2,7 @@
  * Created by garden on 12/7/2013.
  */
 
-define(["jquery", "world"], function ($, world) {
+define(["jquery"], function ($) {
     var addCircles = function () {
         var circleRadii = [40, 20, 10];
 
@@ -48,22 +48,30 @@ define(["jquery", "world"], function ($, world) {
                    "height": height,
                    "id": "map"});
 
-        console.log(world.world);
+        d3.json('data/fullworld.json', function (error, world) {
+              svg.append("path", ".graticule")
+                  .datum(topojson.feature(world, world.objects.subunits))
+                  .attr("d", path)
+                  .attr("class", "land");
 
-        svg.append("path")
-            .datum(graticule)
-            .attr("class", "graticule")
-            .attr("d", path);
+            svg.insert("path", ".graticule")
+                .datum(topojson.mesh(world, world.objects.subunits, function (a, b) { return a !== b; }))
+                .attr("class", "boundary")
+                .attr("d", path);
 
-        svg.insert("path", ".graticule")
-            .datum(topojson.feature(world.world, world.world.objects.land))
-            .attr("class", "land")
-            .attr("d", path);
+//            svg.append("path")
+//                .datum(topojson.feature(world, world.objects.places))
+//                .attr("d", path)
+//                .attr("class", "place");
 
-        svg.insert("path", ".graticule")
-            .datum(topojson.mesh(world.world, world.world.objects.countries, function (a, b) { return a !== b; }))
-            .attr("class", "boundary")
-            .attr("d", path);
+            svg.selectAll(".subunit-label")
+                .data(topojson.feature(world, world.objects.subunits).features)
+                .enter().append("text")
+                .attr("class", function (d) { return "subunit-label " + d.id; })
+                .attr("transform", function (d) { return "translate(" + path.centroid(d) + ")"; })
+                .attr("dy", ".35em")
+                .text(function (d) { return d.properties.name; });
+        });
     };
 
     return {
