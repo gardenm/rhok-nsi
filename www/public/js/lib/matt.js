@@ -29,19 +29,24 @@ define(["jquery"], function ($) {
             });
         };
 
-    var addMercator = function () {
+    var locations = {};
+    var projection;
+    var path;
+    var graticule;
+
+    var addMap = function (callback) {
         var width = 960;
         var height = 960;
 
-        var projection = d3.geo.mercator()
+        projection = d3.geo.mercator()
             .scale((width + 1) / 2 / Math.PI)
             .translate([width / 2, height / 2])
             .precision(.1);
 
-        var path = d3.geo.path()
+        path = d3.geo.path()
             .projection(projection);
 
-        var graticule = d3.geo.graticule();
+        graticule = d3.geo.graticule();
 
         var svg = d3.select("body").append("svg")
             .attr({"width": width,
@@ -59,23 +64,42 @@ define(["jquery"], function ($) {
                 .attr("class", "boundary")
                 .attr("d", path);
 
-//            svg.append("path")
-//                .datum(topojson.feature(world, world.objects.places))
-//                .attr("d", path)
-//                .attr("class", "place");
-
             svg.selectAll(".subunit-label")
                 .data(topojson.feature(world, world.objects.subunits).features)
                 .enter().append("text")
                 .attr("class", function (d) { return "subunit-label " + d.id; })
-                .attr("transform", function (d) { return "translate(" + path.centroid(d) + ")"; })
+                .attr("transform", function (d) {
+                    var centroid = path.centroid(d);
+                    locations[d.properties.name] = centroid;
+
+                    return "translate(" + path.centroid(d) + ")";
+                })
                 .attr("dy", ".35em")
                 .text(function (d) { return d.properties.name; });
+
+            if (callback) {
+                callback();
+            }
         });
+    };
+
+    var addObject = function (country, svgCreator) {
+        if (!locations.hasOwnProperty(country)) {
+            console.log(locations);
+            return;
+        }
+
+        var svg = d3.select("#map");
+        var obj = svgCreator(svg, {"x": locations[country][0], "y": locations[country][1]});
+//        svg.append("circle").attr({"cx": locations[country][0], "cy": locations[country][1], "r": 20, "fill": "red"}).attr("d", path);
+        obj.attr("d", path);
+
     };
 
     return {
         'addCircles' : addCircles,
-        'addMercator' : addMercator
+        'addMap' : addMap,
+        'addObject' : addObject,
+        'locations' : locations
     };
 });
