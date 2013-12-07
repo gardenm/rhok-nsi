@@ -8,14 +8,8 @@ module RhokNsi
       haml :"index"
     end
 
-    get "/world" do
-      haml :"worldmap"
-    end
-
-    get "/makeData" do
-      content_type :json
-      json = File.read(File.dirname(__FILE__) + '/public/data/fullworld.json')
-      JSON.parse(json)
+    get "/about" do
+      haml :"about"
     end
     
     get '/j' do
