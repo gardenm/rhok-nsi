@@ -1,4 +1,4 @@
-define(["jquery", "d3.min", "d3test", "map", "trang"], function($, ignore, d3test, map, trang) {
+define(["jquery", "d3.min", "d3test", "map", "pie"], function($, ignore, d3test, map, pie) {
     //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
     $(function() {
         var mapCanvas = $('#map_canvas').get(0);
@@ -11,15 +11,20 @@ define(["jquery", "d3.min", "d3test", "map", "trang"], function($, ignore, d3tes
 
         map.padding = 30;
         map.addOverlay(gmap, function (country, marker, pos) {
-            marker.append("svg:circle")
-                .attr({"r": map.padding/3,
-                       "cx": map.padding/2,
-                       "cy": map.padding/2})
+            // marker.append("svg:circle")
+            //     .attr({"r": map.padding/3,
+            //            "cx": map.padding/2,
+            //            "cy": map.padding/2})
+            //     .on('click', function () {
+            //         console.log('click: ' + country);
+            //     })
+            //     .on('mouseover', function () {
+            //         console.log('over: ' + country);
+            //     });
+
+            pie.pieChart([50,50], map.padding, marker)
                 .on('click', function () {
                     console.log('click: ' + country);
-                })
-                .on('mouseover', function () {
-                    console.log('over: ' + country);
                 });
         });
     });
