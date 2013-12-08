@@ -86,7 +86,14 @@ define(["jquery"], function ($) {
     var countries = {
         'Malawi': [34.301525,-13.254308],
         'Mali': [-3.996166,17.570692],
-        'Bangladesh': [90.356331,23.684994]
+        'Bangladesh': [90.356331,23.684994],
+        'Afghanistan': [67.709953,33.93911],
+        'Ethiopia': [40.489673,9.145],
+        'Haiti': [-72.28521499999999,18.971187],
+        'Mozambique': [35.529562,-18.665695],
+        'Nigeria': [8.675276999999999,9.081999],
+        'South Sudan': [30.15893,7.963092],
+        'Tanzania': [34.888822,-6.369028]
     };
 
     var addGoogleMap = function (map) {
