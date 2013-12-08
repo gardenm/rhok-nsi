@@ -1,6 +1,6 @@
 
 define(["jquery"], function ($) {
-    var pieChart = function(precentages, size, object) { 
+    var pieChart = function(precentages, size, object, showText) {
       var h = size;
       var w = size;
 
@@ -15,12 +15,7 @@ define(["jquery"], function ($) {
         .innerRadius(innerRadius)
         .outerRadius(outerRadius);
 
-      
-      object.append("svg")
-        .attr("width", w)
-        .attr("height", h);
-
-      var arcs = svg.selectAll("g.arc")
+      var arcs = object.selectAll("g.arc")
         .data(pie(dataset))
         .enter()
         .append("g")
@@ -33,16 +28,18 @@ define(["jquery"], function ($) {
         })
         .attr("d", arc);
 
-      arcs.append("text")
-        .attr("transform", function(d) {
-            return "translate(" + arc.centroid(d) + ")";
-        })
-        .attr("text-anchor", "middle")
-        .text(function(d) {
-            return d.value;
-        });
+      if (showText) {
+          arcs.append("text")
+            .attr("transform", function(d) {
+                return "translate(" + arc.centroid(d) + ")";
+            })
+            .attr("text-anchor", "middle")
+            .text(function(d) {
+                return d.value;
+            });
+      }
 
-      return object;
+      return arcs;
     }
 
     return {
