@@ -7,7 +7,7 @@ function executeSample() {
   drawChart(tempJsonObj, 800, 600);
 }
 
-var drawChart = function(jsonObj, w, h,pos) {
+var drawChart = function(jsonObj, w, h, countryName) {
   
   var data = new google.visualization.DataTable();
   
@@ -15,10 +15,11 @@ var drawChart = function(jsonObj, w, h,pos) {
   data.addColumn('number', 'amount');
   
   //get data from json object, and use array if necessary
-  var category1 = 'Spent';
-  var category2 = 'Remaining';
   var amount1 = jsonObj.spent;
   var amount2 = jsonObj.max - jsonObj.spent;
+  var category1 = 'Contribution Amount Spent: $ '+amount1;
+  var category2 = 'Contribution Amount Remaining: $'+ amount2;
+
   
   data.addRows([
     [category1, amount1],
@@ -26,10 +27,10 @@ var drawChart = function(jsonObj, w, h,pos) {
   ]);
 
   // Set chart options
-  var title = jsonObj.country;
+  // var title = jsonObj.country;
   //var w = 400;
   //var h = 300;
-  var options = {'title':title,
+  var options = {'title':countryName,
                  'width': w,
                  'height': h};
 
@@ -42,7 +43,7 @@ var drawChart = function(jsonObj, w, h,pos) {
   var dialougeLeft = winWidth/3;
 
   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-  $('#chart_div').css('position','absolute').css('top',dialougeTop).css('left',dialougeLeft);
+  $('#chart_div').css('position','absolute').css('top',dialougeTop).css('left',dialougeLeft).css('display','block');
   chart.draw(data, options);
 }
 

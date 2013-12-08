@@ -11,7 +11,7 @@ define(["jquery", "d3.min", "d3test", "map", "pie","dialouge"], function($, igno
 
         map.padding = 50;
 
-        d3.json('data/fakedata.json', function (data) {
+        d3.json('data/realdata.json', function (data) {
             var largestMax = 0;
             $.each(data, function (country, values) {
                 if (values['max'] && values['max'] > largestMax) {
@@ -36,13 +36,19 @@ define(["jquery", "d3.min", "d3test", "map", "pie","dialouge"], function($, igno
                 pie.pieChart([spentPct,remainingPct], size, marker, false)
                     .on('click', function () {
                         
-                        strIn ='{ "country":"Sudan", "max": 800 , "spent":200 }';
-                        var tempJsonObj = eval ("(" + strIn + ")");
-                        dialouge.drawChart(tempJsonObj, 400, 300);
+                        
+                        // strIn ='{ "country":"Sudan", "max": 800 , "spent":200 }';
+                        // var tempJsonObj = eval ("(" + strIn + ")");
+                        dialouge.drawChart(data[country], 400, 300, country);
                         
                 });
             });
         });
+     
+     $('#chart_div').on('click', function () {
+          $('#chart_div').css('display','none');
+          // console.log($('#chart_div'));
+     });
         
     });
 });
