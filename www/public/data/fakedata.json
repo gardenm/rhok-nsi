@@ -1,0 +1,42 @@
+{
+    "Malawi": {
+        "max": 1000,
+        "spent": 500
+    },
+    "Mali": {
+        "max": 2000,
+        "spent": 500
+    },
+    "Bangladesh": {
+        "max": 1000,
+        "spent": 750
+    },
+    "Afghanistan": {
+        "max": 3000,
+        "spent": 200
+    },
+    "Ethiopia": {
+        "max": 500,
+        "spent": 400
+    },
+    "Haiti": {
+        "max": 2500,
+        "spent": 1300
+    },
+    "Mozambique": {
+        "max": 1100,
+        "spent": 470
+    },
+    "Nigeria": {
+        "max": 900,
+        "spent": 800
+    },
+    "South Sudan": {
+        "max": 300,
+        "spent": 160
+    } ,
+    "Tanzania": {
+        "max": 400,
+        "spent": 300
+    }
+}
