@@ -3,13 +3,13 @@ define(["jquery", "d3.min", "d3test", "map", "pie"], function($, ignore, d3test,
     $(function() {
         var mapCanvas = $('#map_canvas').get(0);
         var mapOptions = {
-            center: new google.maps.LatLng(0, 0),
-            zoom: 2,
+            center: new google.maps.LatLng(0, 5),
+            zoom: 3,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var gmap = new google.maps.Map(mapCanvas, mapOptions);
 
-        map.padding = 40;
+        map.padding = 50;
 
         d3.json('data/fakedata.json', function (data) {
             var largestMax = 0;
