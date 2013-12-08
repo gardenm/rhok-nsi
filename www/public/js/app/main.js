@@ -11,7 +11,7 @@ define(["jquery", "d3.min", "d3test", "map", "pie","dialouge"], function($, igno
 
         map.padding = 50;
 
-        d3.json('data/fakedata.json', function (data) {
+        d3.json('data/realdata.json', function (data) {
             var largestMax = 0;
             $.each(data, function (country, values) {
                 if (values['max'] && values['max'] > largestMax) {
