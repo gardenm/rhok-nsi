@@ -10,7 +10,8 @@ base_url = 'http://cidp.herokuapp.com/cube/cida/facts?cut=project_number:'
 bads = ['Africa MC','Americas MC','Asia MC','Europe MC']
 rename={'Afghanistan TIS':'Afghanistan',
         'Tanzania,Un Rep':'Tanzania',
-        'Lao, Dem. Rep':'Lao'}
+        'Lao, Dem. Rep':'Lao',
+        'Congo, Dem Rep.':'Congo'}
 dat = {}
 file = open('../www/public/data/realdata.json', 'w')
 for id in f:
@@ -22,5 +23,5 @@ for id in f:
             dat[p['country_region_name']] = {'max':int(round(p['maximum_cida_contribution'])),
                                             'spent':int(round(p['amount_spent']))}
         
-file.write(json.dumps(dat))
+file.write(json.dumps(dat,sort_keys = True, indent = 2))
 file.close()
