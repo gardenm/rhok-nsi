@@ -1,7 +1,7 @@
 {
     "appDir": "../www",
     "baseUrl": "public/js/lib",
-    "dir": "../www",
+    "dir": "../build",
     //Comment out the optimize line if you want
     //the code minified by UglifyJS
     "optimize": "none",

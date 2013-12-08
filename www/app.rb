@@ -1,7 +1,6 @@
 require 'sinatra/base'
 
 dirname = File.dirname(__FILE__)
-#load helpers
 
 module RhokNsi
 
