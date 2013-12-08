@@ -17,6 +17,6 @@ for project in list_of_projects:
 list = []
 for key in total_funding:
     x = {}
-    list.append({'country': key, 'amount_spent':total_funding[key][0], 'maximum_cida_contribution': total_funding[key][1]})
+    list.append({'name': {key: {'amount_spent':total_funding[key][0], 'maximum_cida_contribution': total_funding[key][1]}}})
     
 print list[1]
