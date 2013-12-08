@@ -46,3 +46,19 @@
     display: inline;
     margin-right: 30px;
 }
+
+path.spent {
+    fill: lightBlue;
+}
+
+.spent {
+  color: lightBlue;  
+}
+
+.remaining {
+    color: orange;
+}
+
+path.remaining {
+    fill: orange;
+}

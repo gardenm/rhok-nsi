@@ -7,7 +7,6 @@ define(["jquery"], function ($) {
       var dataset = precentages;
 
       var pie = d3.layout.pie();
-      var color = d3.scale.category10();
 
       var outerRadius = w / 2;
       var innerRadius = 0;
@@ -23,10 +22,11 @@ define(["jquery"], function ($) {
         .attr("transform", "translate(" + outerRadius + ", " + outerRadius + ")");
     
       arcs.append("path")
-        .attr("fill", function(d, i) {
-            return color(i);
-        })
-        .attr("d", arc);
+          .attr("class", function (d, i) {
+              if (i === 0) return "spent";
+              else return "remaining";
+          })
+          .attr("d", arc);
 
       if (showText) {
           arcs.append("text")
