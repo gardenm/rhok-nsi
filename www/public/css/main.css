@@ -3,10 +3,17 @@
 main.css - jesse burcsik
 
 **/
-#namespace .chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white; }
+
+#map_canvas{
+  
+    max-width: 100%;
+    
+}
+
+.wrap.foot{
+  
+    background-color: #efefef;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  
+}
