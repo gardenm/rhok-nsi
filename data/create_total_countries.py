@@ -12,6 +12,11 @@ for project in list_of_projects:
     else:
         
         total_funding[country][0] = total_funding[country][0] + project['amount_spent']
-        total_funding[country][1] = total_funding[country][1] + project['maximum_cida_contribution']
+        total_funding[country][0] = total_funding[country][1] + project['maximum_cida_contribution']
 
-print total_funding
+list = []
+for key in total_funding:
+    x = {}
+    list.append({'country': key, 'amount_spent':total_funding[key][0], 'maximum_cida_contribution': total_funding[key][1]})
+    
+print list[1]
