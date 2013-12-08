@@ -1,15 +1,15 @@
-define(["jquery", "d3.min", "d3test", "map", "pie"], function($, ignore, d3test, map, pie) {
+define(["jquery", "d3.min", "d3test", "map", "pie","dialouge"], function($, ignore, d3test, map, pie, dialouge) {
     //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
     $(function() {
         var mapCanvas = $('#map_canvas').get(0);
         var mapOptions = {
-            center: new google.maps.LatLng(0, 0),
-            zoom: 2,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+            center: new google.maps.LatLng(0, 5),
+            zoom: 3,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var gmap = new google.maps.Map(mapCanvas, mapOptions);
 
-        map.padding = 40;
+        map.padding = 50;
 
         d3.json('data/fakedata.json', function (data) {
             var largestMax = 0;

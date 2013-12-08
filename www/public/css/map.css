@@ -21,8 +21,8 @@
 }
 
 #map_canvas {
-    width: 1000px;
-    height: 500px;
+    width: 1100px;
+    height: 550px;
 }
 
 .mnch, .mnch svg {
@@ -36,8 +36,27 @@
     font: 10px sans-serif;
 }
 
+.mnch circle {
+    fill: red;
+    stroke: black;
+    stroke-width: 1.5px;
+}
+
+.legend li {
+    display: inline;
+    margin-right: 30px;
+}
+
 path.spent {
-    fill: lightBlue;
+    fill: blue;
+}
+
+.spent {
+  color: blue;  
+}
+
+.remaining {
+    color: orange;
 }
 
 path.remaining {
