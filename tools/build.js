@@ -1,13 +1,13 @@
 {
     "appDir": "../www",
-    "baseUrl": "js/lib",
-    "dir": "../www-build",
+    "baseUrl": "public/js/lib",
+    "dir": "../www",
     //Comment out the optimize line if you want
     //the code minified by UglifyJS
     "optimize": "none",
 
     // point to the shim config we set up before
-    "mainConfigFile": "../www/js/app.js",
+    "mainConfigFile": "../www/public/js/app.js",
 
     "modules": [
         //Optimize the application files. jQuery is not 
