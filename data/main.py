@@ -4,7 +4,6 @@ from pprint import pprint
 
 from petl import *
 
-
 # We're interested in all health related sectors. First ask for all sectors
 url = "http://cidp.herokuapp.com/cube/cida/aggregate?drilldown=sector_name"
 
