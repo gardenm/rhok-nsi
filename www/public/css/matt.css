@@ -6,11 +6,16 @@
 }
 
 .land {
-    fill: #222;
+    fill: #ccc;
 }
 
 .boundary {
     fill: none;
-    stroke: #fff;
+    stroke: #222;
     stroke-width: .5px;
+}
+
+.subunit-label {
+    font-family: Sans-Serif;
+    display: none;
 }

@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = false
+[remote "heroku"]
+	url = git@heroku.com:muskoka-progress.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "origin"]
+	url = https://github.com/gardenm/rhok-nsi.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master

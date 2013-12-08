@@ -1,0 +1,16 @@
+{
+  "countries": {
+    "Canada": {
+      "totalCommitted": 1000,
+      "totalSpent": 100
+    },
+    "UnitedStates": {
+      "totalCommitted": 1000,
+      "totalSpent": 100
+    },
+    "Qatar": {
+      "totalCommitted": 7335,
+      "totalSpent": 12
+    }
+  }
+}
