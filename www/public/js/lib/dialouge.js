@@ -7,7 +7,7 @@ function executeSample() {
   drawChart(tempJsonObj, 800, 600);
 }
 
-function drawChart(jsonObj, w, h) {
+var drawChart = function(jsonObj, w, h,pos) {
   
   var data = new google.visualization.DataTable();
   
@@ -34,7 +34,15 @@ function drawChart(jsonObj, w, h) {
                  'height': h};
 
   // Instantiate and draw our chart, passing in some options.
+
+  var winWidth = $(window).width();
+  var winHeight = $(window).height();
+  
+  var dialougeTop = (winHeight/3)+50;
+  var dialougeLeft = winWidth/3;
+
   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  $('#chart_div').css('position','absolute').css('top',dialougeTop).css('left',dialougeLeft);
   chart.draw(data, options);
 }
 
