@@ -83,6 +83,61 @@ define(["jquery"], function ($) {
         });
     };
 
+    var countries = {
+        'Malawi': [34.301525,-13.254308],
+        'Mali': [-3.996166,17.570692],
+        'Bangladesh': [90.356331,23.684994]
+    };
+
+    var addGoogleMap = function (map) {
+        var overlay = new google.maps.OverlayView();
+
+        overlay.onAdd = function () {
+            var layer = d3.select(this.getPanes().overlayLayer).append("div")
+                .attr("class", "mnch");
+
+            overlay.draw = function () {
+                var projection = this.getProjection();
+                var padding = 10;
+
+                var marker = layer.selectAll("svg")
+                    .data(d3.entries(countries))
+                    .each(transform)
+                    .enter().append("svg:svg")
+                    .each(transform)
+                    .attr("class", "marker");
+
+                marker.append("svg:circle")
+                    .attr({"r": 10,
+                           "cx": padding,
+                           "cy": padding});
+
+//                marker.append("svg:text")
+//                    .attr({"x": padding + 7,
+//                           "y": padding,
+//                           "dy": ".31em"})
+//                    .text(function (d) { return d.key; });
+
+                function transform(d) {
+                    d = new google.maps.LatLng(d.value[1], d.value[0]);
+                    d = projection.fromLatLngToDivPixel(d);
+
+                    console.log(d);
+
+                    var wtf = d3.select(this)
+                        .style("left", (d.x - padding) + "px")
+                        .style("top", (d.y - padding) + "px");
+
+                    console.log(wtf);
+
+                    return wtf;
+                }
+            }
+        }
+
+        overlay.setMap(map);
+    };
+
     var addObject = function (country, svgCreator) {
         if (!locations.hasOwnProperty(country)) {
             console.log(locations);
@@ -100,6 +155,7 @@ define(["jquery"], function ($) {
         'addCircles' : addCircles,
         'addMap' : addMap,
         'addObject' : addObject,
-        'locations' : locations
+        'locations' : locations,
+        'addGoogleMap': addGoogleMap
     };
 });

@@ -19,3 +19,25 @@
     font-family: Sans-Serif;
     display: none;
 }
+
+#map_canvas {
+    width: 1000px;
+    height: 500px;
+}
+
+.mnch, .mnch svg {
+    position: absolute;
+}
+
+.mnch svg {
+    width: 60px;
+    height: 20px;
+    padding-right: 100px;
+    font: 10px sans-serif;
+}
+
+.mnch circle {
+    fill: red;
+    stroke: black;
+    stroke-width: 1.5px;
+}
