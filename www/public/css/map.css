@@ -48,11 +48,11 @@
 }
 
 path.spent {
-    fill: lightBlue;
+    fill: blue;
 }
 
 .spent {
-  color: lightBlue;  
+  color: blue;  
 }
 
 .remaining {

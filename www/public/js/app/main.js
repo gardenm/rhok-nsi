@@ -5,7 +5,7 @@ define(["jquery", "d3.min", "d3test", "map", "pie"], function($, ignore, d3test,
         var mapOptions = {
             center: new google.maps.LatLng(0, 0),
             zoom: 2,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var gmap = new google.maps.Map(mapCanvas, mapOptions);
 
