@@ -31,8 +31,9 @@ define(["jquery", "d3.min", "d3test", "map", "pie"], function($, ignore, d3test,
                 var relativeSize = max / largestMax;
 
                 if (relativeSize < 0.4) relativeSize = 0.4;
+                var size = relativeSize * map.padding;
 
-                pie.pieChart([spentPct,remainingPct], relativeSize * map.padding, marker, false)
+                pie.pieChart([spentPct,remainingPct], size, marker, false)
                     .on('click', function () {
                         console.log('click: ' + country);
                 });

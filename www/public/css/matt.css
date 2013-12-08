@@ -36,8 +36,10 @@
     font: 10px sans-serif;
 }
 
-.mnch circle {
-    fill: red;
-    stroke: black;
-    stroke-width: 1.5px;
+path.spent {
+    fill: lightBlue;
+}
+
+path.remaining {
+    fill: orange;
 }
