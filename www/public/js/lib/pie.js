@@ -39,7 +39,7 @@ define(["jquery"], function ($) {
             });
       }
 
-      return arcs;
+      return object;
     }
 
     return {

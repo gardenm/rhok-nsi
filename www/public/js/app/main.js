@@ -1,4 +1,4 @@
-define(["jquery", "d3.min", "d3test", "map", "pie"], function($, ignore, d3test, map, pie) {
+define(["jquery", "d3.min", "d3test", "map", "pie","dialouge"], function($, ignore, d3test, map, pie, dialouge) {
     //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
     $(function() {
         var mapCanvas = $('#map_canvas').get(0);
