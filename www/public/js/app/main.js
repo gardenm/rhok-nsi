@@ -38,7 +38,7 @@ define(["jquery", "d3.min", "d3test", "map", "pie","dialouge"], function($, igno
                         
                         strIn ='{ "country":"Sudan", "max": 800 , "spent":200 }';
                         var tempJsonObj = eval ("(" + strIn + ")");
-                        dialouge.drawChart(tempJsonObj, 800, 600);
+                        dialouge.drawChart(tempJsonObj, 400, 300);
                         
                 });
             });
