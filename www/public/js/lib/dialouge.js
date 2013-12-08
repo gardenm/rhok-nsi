@@ -7,7 +7,7 @@ function executeSample() {
   drawChart(tempJsonObj, 800, 600);
 }
 
-function drawChart(jsonObj, w, h) {
+var drawChart = function(jsonObj, w, h) {
   
   var data = new google.visualization.DataTable();
   
